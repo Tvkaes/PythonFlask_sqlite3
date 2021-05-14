@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/materia/bootstrap.min.css" integrity="sha384-B4morbeopVCSpzeC1c4nyV0d0cqvlSAfyXVfrPJa25im5p+yEN/YmhlgQP/OyMZD" crossorigin="anonymous">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<body>
+	<div class="login">
+		<div class="login-screen">
+			<div class="app-title">
+				<h1>Ingresar Tareas</h1>
+			</div>
+
+			<div class="login-form" >
+				<form action="/create-task" method="POST">
+				<div class="control-group">
+				<input type="text" name="content" class="login-field" value="" placeholder="Tareas" id="login-name">
+				<label class="login-field-icon fui-user" for="login-name"></label>
+				</div>
+				<button class="btn btn-primary btn-block" type="submit" href="#">Guardar</button>
+			    </form>
+			</div>
+			
+			<div class="login-form">
+				<div class="control-group">
+				<ul class= app-title>
+					{% for info in infos %}
+					<li class="list-group-item">
+						<span class="{% if info.done %} editar {% endif %}">{{info.content}}
+						<a href="/editar/{{info.id}}" class="  btn-success">Editar</a>
+						<a href="/delete/{{info.id}}" class=" btn-warning">Borrar</a>
+					    </span>
+					</li>
+					{% endfor %}
+				</ul>
+				</div>
+				<!--<a class="btn btn-primary btn-large btn-block" href="#">Borrar Todo</a>-->
+			</div>
+
+			
+		</div>
+	</div>
+</body>
+<!-- partial -->
+  
+</body>
+</html>
